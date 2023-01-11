@@ -14,9 +14,8 @@ export default function Ground() {
 
   const handleClickGround = (event) => {
     event.stopPropagation();
-    const [x, y, z] = Object.values(event.point)
-    .map((n) => Math.ceil(n));
-    addCube(x, y, z);
+    const [x, y, z] = Object.values(event.point);
+    addCube(Math.round(x), Math.ceil(y), Math.ceil(z));
   };
 
   return (
