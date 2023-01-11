@@ -3,23 +3,21 @@ import { useBox } from "@react-three/cannon";
 import * as textures from "../images/textures.js";
 import { useState } from "react";
 import { useStore } from "../hooks/useStore.js";
-export default function Cube({ position, texture }) {
+export default function Cube({ id, position, texture }) {
   const [isHovered, setIsHovered] = useState(false);
-  const [removeCube] = useStore((state) => [state.removeCube]);
+  const [removeCube, addCube] = useStore((state) => [
+    state.removeCube,
+    state.addCube,
+  ]);
+
   const [ref] = useBox(() => ({
     type: "Static",
     position,
   }));
   const activeTexture = textures[texture + "Texture"];
+
   return (
     <mesh
-      onClick={(e) => {
-        if (e.altKey) {
-          e.stopPropagation();
-          const { x, y, z } = ref.current.position;
-          removeCube(x, y, z);
-        }
-      }}
       onPointerMove={(e) => {
         e.stopPropagation();
         setIsHovered(true);
@@ -27,6 +25,34 @@ export default function Cube({ position, texture }) {
       onPointerOut={(e) => {
         e.stopPropagation();
         setIsHovered(false);
+      }}
+      onClick={(e) => {
+        e.stopPropagation();
+        const clickedFace = Math.floor(e.faceIndex / 2);
+        const { x, y, z } = ref.current.position;
+
+        if (e.altKey) {
+          removeCube(id);
+          return;
+        } else if (clickedFace === 0) {
+          addCube(x + 1, y, z);
+          return;
+        } else if (clickedFace === 1) {
+          addCube(x - 1, y, z);
+          return;
+        } else if (clickedFace === 2) {
+          addCube(x, y + 1, z);
+          return;
+        } else if (clickedFace === 3) {
+          addCube(x, y - 1, z);
+          return;
+        } else if (clickedFace === 4) {
+          addCube(x, y, z + 1);
+          return;
+        } else if (clickedFace === 5) {
+          addCube(x, y, z - 1);
+          return;
+        }
       }}
       ref={ref}
     >

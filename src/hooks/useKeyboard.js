@@ -20,8 +20,8 @@ export const useKeyboard = () => {
     moveRight: false,
     jump: false,
     dirt: false,
-    grass: false,
     glass: false,
+    grass: false,
     wood: false,
     log: false,
   });

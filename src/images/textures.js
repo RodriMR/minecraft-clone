@@ -6,6 +6,7 @@ const dirtTexture = new TextureLoader().load(dirtImg);
 const logTexture = new TextureLoader().load(logImg);
 const glassTexture = new TextureLoader().load(glassImg);
 const woodTexture = new TextureLoader().load(woodImg);
+const grassTexture = new TextureLoader().load(grassImg);
 
 groundTexture.wrapS = RepeatWrapping;
 groundTexture.wrapT = RepeatWrapping;
@@ -14,5 +15,13 @@ dirtTexture.magFilter = NearestFilter;
 logTexture.magFilter = NearestFilter;
 glassTexture.magFilter = NearestFilter;
 woodTexture.magFilter = NearestFilter;
+grassTexture.magFilter = NearestFilter;
 
-export { groundTexture, dirtTexture, logTexture, glassTexture, woodTexture };
+export {
+  groundTexture,
+  dirtTexture,
+  logTexture,
+  glassTexture,
+  woodTexture,
+  grassTexture,
+};
