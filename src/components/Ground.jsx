@@ -4,7 +4,7 @@ import { groundTexture } from "../images/textures.js";
 export default function Ground() {
   const [ref] = usePlane(() => ({
     rotation: [-Math.PI / 2, 0, 0],
-    position: [0, -0.2, 0],
+    position: [0, -0.5, 0],
   }));
   groundTexture.repeat.set(100, 100);
   return (
