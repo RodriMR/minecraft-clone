@@ -58,3 +58,9 @@ body {
 .hidden {
   animation: fadeout 1s;
 }
+
+.menu {
+  position: absolute;
+  top: 5%;
+  left: 5%;
+}
